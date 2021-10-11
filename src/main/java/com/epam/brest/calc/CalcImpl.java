@@ -8,4 +8,24 @@ public class CalcImpl implements Calc{
         BigDecimal result = weight.multiply(pricePerKG).add(length.multiply(pricePerKm));
         return result;
     }
+
+    public BigDecimal handleFromFile(BigDecimal weight, BigDecimal length) {
+        BigDecimal pricePerKG = null;
+        BigDecimal pricePerKm = null;
+
+        try {
+
+            pricePerKG = new Price().getPriceDependsOnValue(PricePerSmthEnum.WEIGHT, weight);
+            pricePerKm = new Price().getPriceDependsOnValue(PricePerSmthEnum.LENGTH, length);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        BigDecimal result = weight.multiply(pricePerKG).add(length.multiply(pricePerKm));
+
+
+        return result;
+    }
 }
