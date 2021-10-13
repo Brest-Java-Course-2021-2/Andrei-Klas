@@ -5,5 +5,7 @@ import java.math.BigDecimal;
 public interface Calc {
     BigDecimal handle(BigDecimal weight, BigDecimal pricePerKG, BigDecimal length, BigDecimal pricePerKm);
 
-    BigDecimal handleFromFile(BigDecimal weight, BigDecimal length);
+    static BigDecimal handleFromFile(BigDecimal weight, BigDecimal length) {
+        return null;
+    }
 }

@@ -15,7 +15,7 @@ public class Main {
             do {
                 weight = getValueFromCon(scanner, "Enter m:");
                 length = getValueFromCon(scanner, "Enter length:");
-                System.out.println("Result = " + new CalcImpl().handleFromFile(weight, length));
+                System.out.println("Result = " + CalcImpl.handleFromFile(weight, length));
                 System.out.println("Enter 'q' to exit or 'c' for continue");
             }while(!scanner.hasNext("q"));
         }

@@ -9,7 +9,7 @@ public class CalcImpl implements Calc{
         return result;
     }
 
-    public BigDecimal handleFromFile(BigDecimal weight, BigDecimal length) {
+    public static BigDecimal handleFromFile(BigDecimal weight, BigDecimal length) {
         BigDecimal pricePerKG = null;
         BigDecimal pricePerKm = null;
 
