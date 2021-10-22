@@ -1,15 +1,21 @@
 package com.epam.brest;
 
+import com.epam.brest.Files.JSONFileReader;
 import com.epam.brest.calc.Calc;
 import com.epam.brest.calc.CalcImpl;
 
+import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
-        BigDecimal weight, pricePerKG, length, pricePerKm;
+        BigDecimal weight, length;
+
+        Map<Integer, BigDecimal> pricePerKgMap = new JSONFileReader().readData("price_weight.csv");
+        Map<Integer, BigDecimal> pricePerKmMap = new JSONFileReader().readData("price_distance.csv");
 
         try (Scanner scanner = new Scanner(System.in)){
             do {
