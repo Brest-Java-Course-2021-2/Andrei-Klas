@@ -6,4 +6,8 @@
 
     <bean name="fileReader" class="com.epam.brest.files.JSONFileReader"/>
 
+    <bean name="priceSelector" class="com.epam.brest.selector.PriceSelector"/>
+
+    <bean name="calcImpl" class="com.epam.brest.calc.CalcImpl"/>
+
 </beans>

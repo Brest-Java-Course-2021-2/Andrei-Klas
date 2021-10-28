@@ -1,7 +1,6 @@
 package com.epam.brest.files;
 
 import org.codehaus.jackson.map.ObjectMapper;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,7 +9,8 @@ import java.math.BigDecimal;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class JSONFileReader implements com.epam.brest.files.FileReader {
+public class JSONFileReader implements FileReader {
+
     @Override
     public Map<Integer, BigDecimal> readData(String filePath) throws IOException {
         Map<Integer, BigDecimal> resultMap = new TreeMap<>();
