@@ -1,4 +1,4 @@
-package com.epam.brest.Files;
+package com.epam.brest.files;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,7 +8,8 @@ import java.math.BigDecimal;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class JSONFileReader implements FileReader{
+public class CSVFileReader implements FileReader {
+
     @Override
     public Map<Integer, BigDecimal> readData(String filePath) throws IOException {
         Map<Integer, BigDecimal> resultMap = new TreeMap<>();
