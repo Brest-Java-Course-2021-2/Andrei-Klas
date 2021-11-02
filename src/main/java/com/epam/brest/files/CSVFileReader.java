@@ -11,9 +11,10 @@ import java.util.TreeMap;
 public class CSVFileReader implements FileReader {
 
     @Override
-    public Map<Integer, BigDecimal> readData(String filePath) throws IOException {
+    public Map<Integer, BigDecimal> readData(PriceType priceType) throws IOException {
         Map<Integer, BigDecimal> resultMap = new TreeMap<>();
-        InputStream inputStream = getClass().getResourceAsStream("/" + filePath);
+        String filePath = "some value, It doesnt works";
+        InputStream inputStream = getClass().getResourceAsStream("/" + filePath.toString()); //it doesn't work for, I just testing injection from prop file to JSONFileReader
 
         try (InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
              BufferedReader bufferedReader = new BufferedReader(inputStreamReader)) {

@@ -10,16 +10,25 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class JSONFileReader implements FileReader {
+    private FilePath filePath;
 
     @Override
-    public Map<Integer, BigDecimal> readData(String filePath) throws IOException {
+    public Map<Integer, BigDecimal> readData(PriceType priceType) throws IOException {
+        switch (priceType){
+            case LENGTH: return prReadData(filePath.getLengthFilePath());
+            case WEIGHT: return prReadData(filePath.getWeightFilePath());
+        }
+        throw new IOException("Some problem with enum PriceType");
+    }
+
+    public Map<Integer, BigDecimal> prReadData(String filePath) throws IOException {
         Map<Integer, BigDecimal> resultMap = new TreeMap<>();
         Map<String, BigDecimal> tempMap = new TreeMap<>();
         InputStream inputStream = getClass().getResourceAsStream(filePath);
         ObjectMapper mapper = new ObjectMapper();
 
         try (InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
-            BufferedReader bufferedReader = new BufferedReader(inputStreamReader)) {
+             BufferedReader bufferedReader = new BufferedReader(inputStreamReader)) {
 
             // convert JSON to Map
             tempMap = mapper.readValue(bufferedReader, Map.class);
@@ -36,5 +45,13 @@ public class JSONFileReader implements FileReader {
         }
         //System.out.println(resultMap);
         return resultMap;
+    }
+
+    public FilePath getFilePath() {
+        return filePath;
+    }
+
+    public void setFilePath(FilePath filePath) {
+        this.filePath = filePath;
     }
 }
