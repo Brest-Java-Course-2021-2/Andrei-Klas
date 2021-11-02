@@ -1,7 +1,9 @@
 package com.epam.brest;
 
+import com.epam.brest.files.FileReader;
 import com.epam.brest.files.JSONFileReader;
 import com.epam.brest.calc.CalcImpl;
+import com.epam.brest.files.PriceType;
 import com.epam.brest.model.ReadDataState;
 import com.epam.brest.model.Status;
 import com.epam.brest.model.StatusType;
@@ -16,13 +18,11 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws IOException {
 
-        BigDecimal weight, length;
-
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-config.xml");
-        JSONFileReader JSONfReader = (JSONFileReader) applicationContext.getBean("fileReader");
+        FileReader JSONfReader = (JSONFileReader) applicationContext.getBean("fileReader");
 
-        Map<Integer, BigDecimal> pricePerKgMap = JSONfReader.readData("/PriceForKg.json");
-        Map<Integer, BigDecimal> pricePerKmMap = JSONfReader.readData("/PriceForKm.json");
+        Map<Integer, BigDecimal> pricePerKgMap = JSONfReader.readData(PriceType.WEIGHT);
+        Map<Integer, BigDecimal> pricePerKmMap = JSONfReader.readData(PriceType.LENGTH);
 
         try (Scanner scanner = new Scanner(System.in)) {
             Status currentStatus = new ReadDataState(scanner, pricePerKgMap, pricePerKmMap);
@@ -32,5 +32,4 @@ public class Main {
             }
         }
     }
-
 }

@@ -10,7 +10,7 @@ public class PriceSelector {
     public BigDecimal selectPriceValue(Map<Integer, BigDecimal> valueMap, BigDecimal targetValue) {
         SortedSet<Integer> sortedKeys = new TreeSet<>(valueMap.keySet());
         Integer resultKey = Integer.valueOf(sortedKeys.first());
-        //Integer resultKey = sortedKeys.first();
+
         for (Integer key : sortedKeys) {
             if (resultKey >= targetValue.doubleValue()) {
                 break;
